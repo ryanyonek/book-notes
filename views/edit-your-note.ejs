@@ -1,0 +1,32 @@
+<% if (locals.user) { %>
+    <%- include("partials/header.ejs", {user: user}) %>
+<% } else { %>
+    <%- include("partials/header.ejs") %>
+<% } %>
+<body>
+        <div class="container">
+        <h1>Edit Your Note</h1>
+        <div class="row my-5">
+            <div class="col-3">
+                <img src="https://covers.openlibrary.org/b/olid/<%= bookNote.cover %>-M.jpg" alt="cover" />
+            </div>
+            <div class="col-9">
+                <h2>"<%= bookNote.title %>" by <%= bookNote.author %> (<%= bookNote.year %>)</h2>
+                <h3>Book note by: <%= bookNote.username %></h3>
+                <form action="/patch-note" method="post">
+                    <label for="rating" class="">Rating (0-10.0): </label>
+                    <input type="text" required class="" id="rating" name="rating" value="<%= bookNote.rating %>"><br />
+                    <label for="date" class="" >Date read: </label>
+                    <input type="date" class="" id="date" name="date" value="<%= bookNote.date %>"><br />
+                    <textarea class="" required id="summary" name="summary" placeholder="Summary of book note"><%= bookNote.summary %></textarea><br />
+                    <textarea class="" required id="note" name="note" placeholder="Book note"><%= bookNote.notes %></textarea><br />
+                    <input type="text" class="" hidden id="id" name="id" value="<%= bookNote.id %>">
+                    <input type="submit" class="bg-primary text-white rounded" name="action" value="Submit Edits"><br />
+                    <input type="submit" class="bg-danger text-white rounded" name="action" value="Delete Note"><br />
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include("partials/footer.ejs") %>

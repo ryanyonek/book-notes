@@ -1,0 +1,41 @@
+<% if (locals.user) { %>
+    <%- include("partials/header.ejs", {user: user}) %>
+<% } else { %>
+    <%- include("partials/header.ejs") %>
+<% } %>
+<body>
+    <div class="container">
+        <h1>Explore</h1>
+
+        <% if (locals.bookNotes && bookNotes.length > 0) { %>
+            <form>
+                <input type="submit" class="bg-primary text-white rounded" name="action" value="Most Recent"><br />
+                <input type="submit" class="bg-primary text-white rounded" name="action" value="Highest Rating"><br />
+            </form>
+             <% for (var i = 0; i < Object.keys(bookNotes).length; i++) { %>
+                <div class="row my-5">
+                    <div class="col-3">
+                        <img src="https://covers.openlibrary.org/b/olid/<%= bookNotes[i].cover %>-M.jpg" alt="cover" />
+                    </div>
+                    <div class="col-9">
+                        <h2>"<%= bookNotes[i].title %>" by <%= bookNotes[i].author %> (<%= bookNotes[i].year %>)</h2>
+                        <a href="https://openlibrary.org/olid/<%= bookNotes[i].cover %>" target="_blank">Learn more about the book here!</a>
+                        <h3>Book note by: <%= bookNotes[i].username %></h3>
+                        <h4>Rating: <%= bookNotes[i].rating %>/10</h4>
+                        <h4>Date read: <%= bookNotes[i].date %></h4>
+                        <h4><%= bookNotes[i].summary %></h3>
+                        <form action="/view-note" method="post">
+                            <input type="text" class="" hidden id="id" name="id" value="<%= bookNotes[i].id %>">
+                            <input type="submit" class="bg-primary text-white rounded" value="View Note"><br />
+                        </form>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+        
+    <!-- <img src="https://covers.openlibrary.org/b/isbn/<%# isbn%>-S.jpg" alt="Software Dev Guide"  /> 
+        <a href="https://openlibrary.org/isbn/<%# isbn%>" target="_blank">More info here!</a>
+    -->
+    </div>
+</body>
+<%- include("partials/footer.ejs") %>

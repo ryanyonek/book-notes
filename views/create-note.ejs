@@ -1,0 +1,36 @@
+<% if (locals.user) { %>
+    <%- include("partials/header.ejs", {user: user}) %>
+<% } else { %>
+    <%- include("partials/header.ejs") %>
+<% } %>
+
+<body>
+    <div class="container">
+        <h1>Create Note</h1>
+        <form action="/find-book" method="post">
+            <label for="query" class="">Search for book: </label>
+            <input type="text" class="" id="query" name="query" placeholder="<%= locals.title ? title :  'Search by book title or author'%>"><br />
+            <input type="submit" class="bg-primary text-white rounded" value="Search"><br />
+        </form>
+        <% if (locals.cover) {%>
+            <img src="https://covers.openlibrary.org/b/olid/<%= cover %>-M.jpg" alt="cover" />
+            <form action="/create-note" method="post">
+                <!--Book Info-->
+                <label for="title" class="">Create book note for: </label>
+                <input type="text" class="" readonly id="title" name="title" value="<%= title %>"><br />
+                <input type="text" class="" readonly id="author" name="author" value="<%= author %>"><br />
+                <input type="text" class="" readonly id="year" name="year" value="<%= year %>"><br />
+                <input type="text" class="" hidden id="cover" name="cover" value="<%= cover %>"><br />
+                <!--Book Note Info-->
+                <label for="rating" class="">Rating (0-10.0): </label>
+                <input type="text" required class="" id="rating" name="rating"><br />
+                <label for="date" class="">Date read: </label>
+                <input type="date" class="" id="date" name="date"><br />
+                <textarea class="" required id="summary" name="summary" placeholder="Summary of book note"></textarea><br />
+                <textarea class="" required id="note" name="note" placeholder="Book note"></textarea><br />
+                <input type="submit" class="bg-primary text-white rounded" value="Create Note"><br />
+            </form>
+        <% } %>
+    </div>
+</body>
+<%- include("partials/footer.ejs") %>

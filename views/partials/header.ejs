@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Notes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/main.css" />
+</head>
+<div class="container"> 
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"> 
+        <div class="col-md-3 mb-2 mb-md-0"> 
+            <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">Book Notes</a> 
+        </div> 
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
+            <li><a href="/" class="nav-link px-2">Explore</a></li> 
+            <li><a href="/create-note" class="nav-link px-2">New Note</a></li> 
+            
+        </ul> 
+        <% if (locals.user) { %>
+            <div class="col-md-3 text-end"> 
+                <a href="/user" class="btn btn-outline-primary me-2"><%= user.username %></a> 
+                <a href="/sign-out" class="btn btn-primary">Sign Out</a> 
+            </div> 
+        <% } else { %>
+            <div class="col-md-3 text-end"> 
+                <a href="/login" class="btn btn-outline-primary me-2">Login</a> 
+                <a href="/sign-up" class="btn btn-primary">Sign-up</a> 
+            </div> 
+        <% } %>
+    </header> 
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</html>

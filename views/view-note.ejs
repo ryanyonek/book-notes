@@ -1,0 +1,30 @@
+<% if (locals.user) { %>
+    <%- include("partials/header.ejs", {user: user}) %>
+<% } else { %>
+    <%- include("partials/header.ejs") %>
+<% } %>
+<body>
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-3">
+                <img src="https://covers.openlibrary.org/b/olid/<%= bookNote.cover %>-M.jpg" alt="cover" />
+            </div>
+            <div class="col-9">
+                <h2>"<%= bookNote.title %>" by <%= bookNote.author %> (<%= bookNote.year %>)</h2>
+                <h3>Book note by: <%= bookNote.username %></h3>
+                <h3>Rating: <%= bookNote.rating %></h3>
+                <h3><%= bookNote.summary %></h3>
+                <h4>Date read: <%= bookNote.date %></h4>
+                <h2>Notes</h2>
+                <p><%= bookNote.notes %></p>
+                <% if (user && bookNote.username == user.username) { %>
+                    <form action="/edit-note" method="post">
+                        <input type="text" class="" hidden id="id" name="id" value="<%= bookNote.id %>">
+                        <input type="submit" class="bg-primary text-white rounded" value="Edit Note"><br />
+                    </form>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include("partials/footer.ejs") %>

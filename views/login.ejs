@@ -1,0 +1,23 @@
+<% if (locals.user) { %>
+    <%- include("partials/header.ejs", {user: user}) %>
+<% } else { %>
+    <%- include("partials/header.ejs") %>
+<% } %>
+
+
+<body>
+<div class="container">
+        <h1>Login</h1>
+        <form action="/login" method="post">
+            <input type="text" class="" required id="username" name="username" placeholder="Username"><br />
+            <input type="text" class="" required id="password" name="password" placeholder="Password"><br />
+            <input type="submit" class="bg-primary text-white rounded" value="Login"><br />
+        </form>
+        <% if (locals.error) {%>
+        <p><%= error %></p>
+        <% } %>
+        <h2>Don't have an account?</h2>
+        <a href="/sign-up">Sign-Up Here</a>
+    </div>
+</body>
+<%- include("partials/footer.ejs") %>
