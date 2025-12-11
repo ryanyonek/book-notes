@@ -9,7 +9,7 @@
         <h1>Create Note</h1>
         <form action="/find-book" method="post">
             <label for="query" class="">Search for book: </label>
-            <input type="text" class="" id="query" name="query" placeholder="<%= locals.title ? title :  'Search by book title or author'%>"><br />
+            <input type="text" required class="" id="query" name="query" placeholder="<%= locals.title ? title :  'Search by book title or author'%>"><br />
             <input type="submit" class="bg-primary text-white rounded" value="Search"><br />
         </form>
         <% if (locals.cover) {%>

@@ -19,3 +19,6 @@ Install node modules:
 
 Run using node:
 - node index.js
+
+## Screenshot of Explore Page
+[book notes explore page](./public/images/book_notes_read_me.png)
