@@ -11,6 +11,11 @@ In the shell:
 This project uses Node.
 - Install: https://nodejs.org/en/download
 
+### Database
+I used pgAdmin 4 to create the PostgreSQL database to store the user data.
+In order to run this program locally, you must create the book_notes database on your own system and modify the environment variables with your own information.
+Use the queries in the [queries.sql](./queries.sql) file to set up the tables in your database.
+
 ### Run
 In the shell:
 
