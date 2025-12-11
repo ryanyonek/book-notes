@@ -2,6 +2,7 @@
 Create and edit book notes, powered by the [Open Library APIs](https://openlibrary.org/developers/api).
 
 ## Usage
+This project is available for local hosting only.
 ### Clone the Repository
 In the shell:
 - git clone https://github.com/ryanyonek/book-notes.git
